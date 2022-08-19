@@ -5,6 +5,9 @@
  */
 package Telas;
 
+import Classes.Usuario;
+import Implementacao.UsuarioImpl;
+
 /**
  *
  * @author Aluno
@@ -62,6 +65,11 @@ public class TelaLoginP extends javax.swing.JFrame {
         txtSenha.setBounds(80, 70, 110, 20);
 
         bntEntrar.setText("Entrar");
+        bntEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntEntrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(bntEntrar);
         bntEntrar.setBounds(40, 140, 63, 23);
 
@@ -81,6 +89,20 @@ public class TelaLoginP extends javax.swing.JFrame {
     private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLoginActionPerformed
+
+    private void bntEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEntrarActionPerformed
+        // TODO add your handling code here:
+        Usuario usuario = new Usuario();
+        UsuarioImpl usuarioimpl = new UsuarioImpl();
+        usuario.setLogin(txtLogin.getText());
+        usuario.setSenha(txtSenha.getText());
+        if(usuarioimpl.verificaLogin(usuario)){
+            Menu menu = new Menu();
+            menu.setVisible(true);
+            dispose();
+        }
+        
+    }//GEN-LAST:event_bntEntrarActionPerformed
 
     /**
      * @param args the command line arguments
